@@ -1,0 +1,26 @@
+class Solution {
+    public String[] findWords(String[] words) {
+        String[] base = {"QWERTYUIOP","ASDFGHJKL","ZXCVBNM"};
+        List<String> list = new ArrayList<String>();
+        for(String str : words)
+        {
+            for(String basestr : base)
+            {
+                boolean find = true;
+                for(char c : str.toCharArray())
+                {
+                    if(!basestr.contains(String.valueOf(c).toUpperCase()))
+                    {
+                        find = false;
+                        break;
+                    }                        
+                }
+                if (find) list.add(str);
+            }            
+        }
+        String[] res = new String[list.size()];
+        for(int i = 0;i < res.length; i++)
+            res[i] = list.get(i);
+        return res;
+    }
+}
